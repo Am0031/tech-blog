@@ -10,7 +10,7 @@ const postsData = [
   {
     title: "How I could learn Javascript",
     postText:
-      "I could use these online platforms : freecodecamp.org or Hackr.io ",
+      "I could use these online platforms : freecodecamp.org or Hackr.io. I hear they are pretty good. ",
     userId: 2,
   },
   {
