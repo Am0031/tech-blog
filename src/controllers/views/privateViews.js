@@ -1,14 +1,16 @@
+const path = require("path");
+
 const renderDashboardPage = (req, res) => {
-  console.log("render");
-  return res.json({ render: "dashboard" });
+  const filePath = path.join(__dirname, "../../../public/dashboard.html");
+  return res.sendFile(filePath);
 };
 const renderEditPost = (req, res) => {
-  console.log("render");
-  return res.json({ render: "edit post" });
+  const filePath = path.join(__dirname, "../../../public/editPost.html");
+  return res.sendFile(filePath);
 };
 const renderCreatePost = (req, res) => {
-  console.log("render");
-  return res.json({ render: "create post" });
+  const filePath = path.join(__dirname, "../../../public/createPost.html");
+  return res.sendFile(filePath);
 };
 
 module.exports = { renderDashboardPage, renderEditPost, renderCreatePost };

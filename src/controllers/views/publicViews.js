@@ -1,18 +1,20 @@
+const path = require("path");
+
 const renderHomePage = (req, res) => {
-  console.log("render");
-  return res.json({ render: "home page" });
+  const filePath = path.join(__dirname, "../../../public/home.html");
+  return res.sendFile(filePath);
 };
 const renderFullPost = (req, res) => {
-  console.log("render");
-  return res.json({ render: "full post" });
+  const filePath = path.join(__dirname, "../../../public/fullPost.html");
+  return res.sendFile(filePath);
 };
 const renderLoginPage = (req, res) => {
-  console.log("render");
-  return res.json({ render: "login page" });
+  const filePath = path.join(__dirname, "../../../public/login.html");
+  return res.sendFile(filePath);
 };
 const renderSignupPage = (req, res) => {
-  console.log("render");
-  return res.json({ render: "signup page" });
+  const filePath = path.join(__dirname, "../../../public/signup.html");
+  return res.sendFile(filePath);
 };
 
 module.exports = {

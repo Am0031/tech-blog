@@ -43,7 +43,10 @@
                 <a class="nav-link" href="/login">Login</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/signup">Sign Up</a>
+                <a class="nav-link" href="/dashboard">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/">Logout</a>
               </li>
             </ul>
           </div>
@@ -51,39 +54,51 @@
       </div>
     </nav>
     <div class="container">
-      <div style="margin-top: 80px" class="text-center card-header">
-        <h1 class="display-4 mb-4">Login</h1>
-        <form class="text-left">
+      <h1 class="display-4 mb-5 text-center">Full blog post</h1>
+      <div
+        class="container post-container d-flex flex-column align-items-stretch"
+      >
+        <div class="card border-success mb-3">
+          <div class="card-header d-flex flex-row justify-content-between">
+            <h4 class="card-title">Title of the post</h4>
+            <p class="postText">Created By: xxx on xxx</p>
+          </div>
+          <div class="card-body">
+            <p class="postText">Full description of the post</p>
+          </div>
+        </div>
+        <div class="card border-info mb-3">
+          <div class="card-body d-flex flex-column">
+            <p class="commentText">Comment 1</p>
+            <p class="commentText">Commented by xxx on xxx</p>
+          </div>
+        </div>
+        <div class="card border-info mb-3">
+          <div class="card-body d-flex flex-column">
+            <p class="commentText">Comment 2</p>
+            <p class="commentText">Commented by xxx on xxx</p>
+          </div>
+        </div>
+        <div class="d-flex flex-column align-items-center">
+          <a
+            class="btn btn-success m-3 btn btn-success mr-5 ml-5"
+            style="width: 200px"
+            href="/"
+            >Back to All Posts
+          </a>
+        </div>
+        <!-- <form class="text-left">
           <fieldset>
-            <div class="form-group">
-              <label for="inputEmail1" class="form-label">Email address</label>
-              <input
-                type="email"
-                class="form-control"
-                id="inputEmail1"
-                aria-describedby="emailHelp"
-                placeholder="Enter email"
-              />
-              <small id="emailHelp" class="form-text text-muted"
-                >We'll never share your email with anyone else.</small
-              >
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1" class="form-label"
-                >Password</label
-              >
-              <input
-                type="password"
-                class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Password"
-              />
-            </div>
-            <div class="form-group d-flex flex-column align-items-center">
-              <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group d-flex flex-row justify-content-center">
+              <button type="click" class="btn btn-success mr-5 ml-5">
+                Edit Post
+              </button>
+              <button type="click" class="btn btn-danger mr-5 ml-5">
+                Delete Post
+              </button>
             </div>
           </fieldset>
-        </form>
+        </form> -->
       </div>
     </div>
     <script src="./assets/js/script.js" async defer></script>
