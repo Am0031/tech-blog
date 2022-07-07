@@ -81,8 +81,20 @@ const updatePostById = async (req, res) => {
 };
 
 const deletePostById = async (req, res) => {
-  console.log("delete post by id");
-  return res.json({ message: "delete post by id" });
+  try {
+    const { id } = req.params;
+    const post = await Post.findByPk(id);
+
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    await Post.destroy({ where: { id } });
+    return res.status(200).json({ message: "Post deleted" });
+  } catch (error) {
+    console.error(`ERROR | ${error.message}`);
+    return res.status(500).json(error);
+  }
 };
 
 module.exports = {
