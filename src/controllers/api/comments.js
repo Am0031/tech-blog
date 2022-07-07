@@ -20,13 +20,42 @@ const createComment = async (req, res) => {
     return res.status(500).json(error);
   }
 };
-const deleteComment = (req, res) => {
-  console.log("delete comment by id");
-  return res.json({ message: "delete comment by id" });
+const deleteComment = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const comment = await Comment.findByPk(id);
+
+    if (!comment) {
+      return res.status(404).json({ message: "Comment not found" });
+    }
+
+    await Comment.destroy({ where: { id } });
+    return res.status(200).json({ message: "Comment deleted" });
+  } catch (error) {
+    console.error(`ERROR | ${error.message}`);
+    return res.status(500).json(error);
+  }
 };
-const updateComment = (req, res) => {
-  console.log("update comment by id");
-  return res.json({ message: "update comment" });
+const updateComment = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const comment = await Comment.findByPk(id);
+
+    if (!comment) {
+      return res.status(404).json({ message: "Comment not found" });
+    }
+
+    const { commentText } = req.body;
+    if (!commentText) {
+      return res.status(500).json({ message: "Unable to update comment" });
+    }
+    await Comment.update({ commentText }, { where: { id } });
+
+    return res.status(200).json({ message: "Comment updated" });
+  } catch (error) {
+    console.error(`ERROR | ${error.message}`);
+    return res.status(500).json(error);
+  }
 };
 
 module.exports = { createComment, updateComment, deleteComment };
