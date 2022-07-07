@@ -58,12 +58,29 @@ const createPost = async (req, res) => {
   }
 };
 
-const updatePostById = (req, res) => {
-  console.log("update post by id");
-  return res.json({ message: "update post" });
+const updatePostById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const post = await Post.findByPk(id);
+
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    const { title, postText } = req.body;
+    if (!title && !postText) {
+      return res.status(500).json({ message: "Unable to update post" });
+    }
+    await Post.update({ title, postText }, { where: { id } });
+
+    return res.status(200).json({ message: "Post updated" });
+  } catch (error) {
+    console.error(`ERROR | ${error.message}`);
+    return res.status(500).json(error);
+  }
 };
 
-const deletePostById = (req, res) => {
+const deletePostById = async (req, res) => {
   console.log("delete post by id");
   return res.json({ message: "delete post by id" });
 };
