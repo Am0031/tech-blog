@@ -3,6 +3,7 @@ const { User, Post, Comment } = require("../../models");
 const getAllPosts = async (req, res) => {
   try {
     const posts = await Post.findAll({
+      attributes: ["id", "title", "createdAt"],
       include: [{ model: User, attributes: ["userName"] }],
     });
     if (!posts) {
@@ -18,10 +19,18 @@ const getAllPosts = async (req, res) => {
 const getPostById = async (req, res) => {
   try {
     const post = await Post.findAll({
-      include: [{ model: Comment }, { model: User }],
+      attributes: ["id", "title", "postText", "createdAt"],
+      include: [
+        {
+          model: Comment,
+          attributes: ["commentText", "createdAt"],
+          include: [{ model: User, attributes: ["userName"] }],
+        },
+        { model: User, attributes: ["userName"] },
+      ],
     });
     if (!post) {
-      return res.status(500).json({ message: "Posts not found" });
+      return res.status(500).json({ message: "Post not found" });
     }
     return res.json(post);
   } catch (error) {
