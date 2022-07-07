@@ -27,9 +27,6 @@ const postsData = [
   },
 ];
 
-const seedPosts = () => {
-  Post.bulkCreate(postsData);
-  console.log("Successfully seeded posts");
-};
+const seedPosts = () => Post.bulkCreate(postsData);
 
 module.exports = seedPosts;

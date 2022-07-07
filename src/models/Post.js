@@ -25,7 +25,7 @@ const schema = {
     allowNull: false,
   },
   postText: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: false,
   },
   userId: {
