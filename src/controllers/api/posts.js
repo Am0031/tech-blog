@@ -18,7 +18,8 @@ const getAllPosts = async (req, res) => {
 
 const getPostById = async (req, res) => {
   try {
-    const post = await Post.findAll({
+    const { id } = req.params;
+    const post = await Post.findByPk(id, {
       attributes: ["id", "title", "postText", "createdAt"],
       include: [
         {

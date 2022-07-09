@@ -1,10 +1,10 @@
 const login = (req, res) => {
   console.log("req, resogin");
-  return res.jsreq, resn({ message: "login" });
+  return res.json({ message: "login" });
 };
 const signup = (req, res) => {
   console.log("req, resignup");
-  return res.jsreq, resn({ message: "signup" });
+  return res.json({ message: "signup" });
 };
 const logout = (req, res) => {
   console.log("logout");
