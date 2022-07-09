@@ -8,7 +8,7 @@ class User extends Model {
   getUser() {
     return {
       id: this.id,
-      userName: this.userName,
+      username: this.username,
       email: this.email,
     };
   }
