@@ -15,8 +15,13 @@ const app = express();
 
 // Set up sessions
 const sess = {
-  secret: "Super secret secret",
-  cookie: {},
+  secret: process.env.SESSION_SECRET,
+  cookie: {
+    maxAge: 3600 * 1000,
+    httpOnly: true,
+    secure: false,
+    sameSite: "strict",
+  },
   resave: false,
   saveUninitialized: false,
   store: new SequelizeStore({
