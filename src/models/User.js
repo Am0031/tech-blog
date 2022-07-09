@@ -26,7 +26,7 @@ const schema = {
     autoIncrement: true,
     allowNull: false,
   },
-  userName: {
+  username: {
     type: DataTypes.STRING,
     allowNull: false,
   },
