@@ -9,9 +9,11 @@ const handleSignup = async (event) => {
   const confirmPassword = $("#inputPassword2").val();
 
   if (password === confirmPassword) {
-    $("#inputPassword2").setCustomValidity("");
+    // $("#inputPassword2").setCustomValidity("");
+    console.log("passwords match");
   } else {
-    $("#inputPassword2").setCustomValidity("Passwords must match.");
+    // $("#inputPassword2").setCustomValidity("Passwords must match.");
+    alert("Passwords do not match. Please amend the passwords");
     return false;
   }
 
@@ -31,13 +33,34 @@ const handleSignup = async (event) => {
   if (response.status !== 200) {
     console.error("Signup failed");
   } else {
-    window.location.replace("/dashboard");
+    window.location.replace("/login");
   }
 };
 
-const handleLogin = (event) => {
+const handleLogin = async (event) => {
   event.preventDefault();
-  console.log("handling login");
+
+  const email = $("#inputEmail").val().trim();
+  const password = $("#inputPassword").val();
+
+  const userInfo = { email, password };
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    redirect: "follow",
+    body: JSON.stringify(userInfo),
+  };
+
+  const response = await fetch("/auth/login", options);
+
+  if (response.status !== 200) {
+    console.error("Login failed");
+  } else {
+    window.location.replace("/dashboard");
+  }
 };
 
 $("#signupForm").submit(handleSignup);

@@ -41,7 +41,7 @@ const signup = async (req, res) => {
 
     if (user) {
       console.log(
-        `[ERROR]: Failed to create user | Email address of ${email} already exists as a mentee`
+        `[ERROR]: Failed to create user | Email address of ${email} already exists`
       );
 
       return res.status(500).json({ success: false });
