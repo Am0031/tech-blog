@@ -5,8 +5,7 @@ const { Post, User, Comment } = require("../../models");
 const renderHomePage = async (req, res) => {
   try {
     const posts = await dataProvider.getAllPosts();
-
-    console.log(posts.length);
+    const { isLoggedIn } = req.session;
 
     const formatData = (each) => {
       const id = each.id;
@@ -21,7 +20,7 @@ const renderHomePage = async (req, res) => {
       };
     };
     const viewModel = posts.map((d) => d.dataValues).map(formatData);
-    return res.render("home", { data: viewModel });
+    return res.render("home", { isLoggedIn, data: viewModel });
   } catch (error) {
     console.log(`${error.message}`);
     res.render("error");
@@ -31,6 +30,7 @@ const renderHomePage = async (req, res) => {
 const renderFullPost = async (req, res) => {
   try {
     const { id } = req.params;
+    const { isLoggedIn } = req.session;
     const post = await dataProvider.getFullPost(id);
     const data = post.dataValues;
 
@@ -60,7 +60,7 @@ const renderFullPost = async (req, res) => {
 
     const viewModel = formatData(data);
 
-    res.render("fullPost", viewModel);
+    res.render("fullPost", { isLoggedIn, data: viewModel });
   } catch (error) {
     console.log(`${error.message}`);
     res.render("error");
