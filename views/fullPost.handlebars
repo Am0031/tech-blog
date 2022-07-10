@@ -4,11 +4,11 @@
 {{>publicNavbar}}
 {{/if}}
 
-
-{{#if isLoggedIn}}
-    <div class="container"><h1 class="display-4 mb-3 text-center">All blog posts</h1></div>
+<div class="container">
+      
+    {{#if isLoggedIn}}
+    <h1 class="display-4 mb-3 text-center">All blog posts</h1>
     {{else}}
-    <div class="container">
     <h1 class="display-4 mb-3 text-center">All blog posts</h1>
       <div class="container">
         <div class="container text-center">
@@ -36,28 +36,29 @@
           </div>
         </div>
       </div>
-    </div>
-{{/if}}
-
-
-<div class="container">
+      {{/if}}
 
       <div
         class="container post-container d-flex flex-column align-items-stretch"
       >
-        {{#each data}}
         <div class="card border-success mb-3">
-            <div class="card-header d-flex flex-row justify-content-between">
-            <h4 class="card-title">{{title}}</h4>
-            <a class="btn btn-success" href="/posts/{{id}}">Read the full post</a>
-            </div>
-            <div class="card-body">
-            <p class="card-text">Posted by:
-                {{user}}
-                    - On :
-                {{date}}</p>
-            </div>
-            </div>
-        {{/each}}
+          <div class="card-header d-flex flex-row justify-content-between">
+            <h4 class="card-title">{{this.title}}</h4>
+            <p class="postText">Created By: {{this.user}} on {{this.date}}</p>
+          </div>
+          <div class="card-body">
+            <p class="postText">{{this.postText}}</p>
+          </div>
+        </div>
+      
+
+      {{#each this.comments}}
+      <div class="card border-info mb-3">
+          <div class="card-body d-flex flex-column">
+            <p class="commentText">{{commentText}}</p>
+            <p class="commentText">Commented by {{commentUser}} on {{commentDate}}</p>
+          </div>
+        </div>
+      {{/each}}
       </div>
 </div>
