@@ -9,7 +9,7 @@ const getAllPosts = async (req, res) => {
     if (!posts) {
       return res.status(500).json({ message: "Posts not found" });
     }
-    return res.json(posts);
+    return res.json({ data: posts });
   } catch (error) {
     console.error(`ERROR | ${error.message}`);
     return res.status(500).json(error);
