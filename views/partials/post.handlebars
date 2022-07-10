@@ -1,0 +1,14 @@
+{{#each}}
+  <div class="card border-success mb-3">
+    <div class="card-header d-flex flex-row justify-content-between">
+      <h4 class="card-title">{{title}}</h4>
+      <a class="btn btn-success" href="/posts/{{id}}">Read the full post</a>
+    </div>
+    <div class="card-body">
+      <p class="card-text">Posted by:
+        {{user.username}}
+        - On the:
+        {{createdAt}}</p>
+    </div>
+  </div>
+{{/each}}
