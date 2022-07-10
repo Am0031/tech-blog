@@ -1,0 +1,67 @@
+{{#if isLoggedIn}}
+{{>privateNavbar}}
+{{else}}
+{{>publicNavbar}}
+{{/if}}
+
+<div class="container">
+      <div style="margin-top: 80px" class="text-center card-header">
+        <h1 class="display-4 mb-4">Sign Up</h1>
+        <form class="text-left">
+          <fieldset>
+            <div class="form-group">
+              <label for="inputUsername" class="form-label">Pick a username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputUsername"
+                aria-describedby="usernameHelp"
+                placeholder="Enter your chosen username"
+              />
+              <small id="usernameHelp" class="form-text text-muted"
+                >We register you with your email address so you can pick any
+                username!</small
+              >
+            </div>
+            <div class="form-group">
+              <label for="inputEmail" class="form-label">Your email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="inputEmail"
+                aria-describedby="emailHelp"
+                placeholder="Enter email"
+              />
+              <small id="emailHelp" class="form-text text-muted"
+                >We'll never share your email with anyone else.</small
+              >
+            </div>
+            <div class="form-group">
+              <label for="inputPassword1" class="form-label"
+                >Choose a Password</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="inputPassword1"
+                placeholder="Password"
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputPassword2" class="form-label"
+                >Confirm Password</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="inputPassword2"
+                placeholder="Confirm Password"
+              />
+            </div>
+            <div class="form-group d-flex flex-column align-items-center">
+              <button type="submit" class="btn btn-primary" id="signup-btn">Submit</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
