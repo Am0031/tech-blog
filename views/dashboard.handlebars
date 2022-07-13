@@ -3,7 +3,7 @@
 
 <div class="container d-flex flex-column align-items-center">
   <h1 class="display-4 mb-3 text-center">{{username}} - these are all your blog posts</h1>
-  <button type="button" class="btn btn-success btn-lg m-4" id="add-btn">Add new post</button>
+  <a href="/dashboard/create" class="btn btn-success btn-lg m-4" id="add-post-btn">Add new post</a>
   </div>
 
 <div class="container">
@@ -17,8 +17,8 @@
           <div class="card-header d-flex flex-row justify-content-between">
             <h4 class="card-title">{{title}}</h4>
             <div>
-              <a class="btn btn-primary" href="/dashboard/edit/{{id}}" id="edit-btn-{{id}}">Edit</a>
-              <a class="btn btn-danger" role="button" id="delete-btn-{{id}}">Delete</a>
+              <a class="btn btn-primary" href="/dashboard/edit/{{id}}" id="edit-post-btn" data-postId={{id}}>Edit</a>
+              <a class="btn btn-danger" role="button" id="delete-post-btn" data-postId={{id}}>Delete</a>
             </div>
           </div>
           <div class="card-body">
@@ -35,7 +35,7 @@
       >
         <div class="alert alert-warning">
         <h4 class="alert-heading text-center">You don't have any posts!</h4>
-        <p class="mb-0 text-center"> You can get started by creating your first post by clicking on the <a href="/dashboard/create" class="alert-link">"Add new post"</a> button!</p>
+        <p class="mb-0 text-center"> You can get started and create your first post by clicking on the <a href="/dashboard/create" class="alert-link">"Add new post"</a> button!</p>
         </div>
       </div>
 
