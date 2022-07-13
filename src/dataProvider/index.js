@@ -3,7 +3,7 @@ const { User, Comment, Post } = require("../models");
 const getAllPosts = async () => {
   return await Post.findAll({
     attributes: ["id", "title", "createdAt"],
-    include: [{ model: User, attributes: ["username"] }],
+    include: [{ model: User, attributes: ["id", "username"] }],
   });
 };
 

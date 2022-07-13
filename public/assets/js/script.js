@@ -82,6 +82,51 @@ const handleLogout = async (event) => {
   }
 };
 
+const handleAddComment = () => {
+  console.log("handling add comment");
+};
+
+const handleAddPost = async (event) => {
+  event.preventDefault();
+
+  const id = parseInt($("#add-post-btn").attr("data-id"));
+  const title = $("#inputTitle").val().trim();
+  const postText = $("#inputPostText").val().trim();
+
+  const postContent = { title, postText, id };
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    redirect: "follow",
+    body: JSON.stringify(postContent),
+  };
+
+  const response = await fetch("/api/posts", options);
+  if (response.status !== 200) {
+    console.error("Post creation failed");
+  } else {
+    $("#post-container").remove();
+    $("#add-post-container")
+      .append(`<div class="alert alert-secondary d-flex flex-column align-items-center">
+    <h4 class="alert-heading text-center"><i class="fa-solid fa-check"></i> Your new post has been created successfully!</h4>
+    <a class="btn btn-primary" href="/dashboard/create">Add another post</a>
+    </div>`);
+  }
+};
+const handleEditPost = () => {
+  console.log("handling edit");
+};
+const handleDeletePost = () => {
+  console.log("handling delete post");
+};
+
 $("#logout-btn").click(handleLogout);
 $("#signupForm").submit(handleSignup);
 $("#loginForm").submit(handleLogin);
+$("#comment-form").submit(handleAddComment);
+$("#add-post-form").submit(handleAddPost);
+$("#edit-post-form").submit(handleEditPost);
+$("#delete-post-btn").submit(handleDeletePost);
