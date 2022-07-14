@@ -107,6 +107,12 @@ const handleAddPost = async (event) => {
   const response = await fetch("/api/posts", options);
   if (response.status !== 200) {
     console.error("Post creation failed");
+    $("#post-container").remove();
+    $("#add-post-container")
+      .append(`<div class="alert alert-danger d-flex flex-column align-items-center">
+    <h4 class="alert-heading text-center"><i class="fa-solid fa-check"></i> Sorry, your new post could not be created!</h4>
+    <h4> Please go back to your <a class="btn btn-primary" href="/dashboard">dashboard</a>. </h4>
+    </div>`);
   } else {
     $("#post-container").remove();
     $("#add-post-container")
@@ -145,8 +151,44 @@ const handleEditPost = async (event) => {
     </div>`);
   }
 };
-const handleDeletePost = () => {
-  console.log("handling delete post");
+const handleChangePost = async (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+
+  const target = $(event.target);
+  const buttonId = target.attr("data-btnId");
+  const id = parseInt(target.attr("data-postId"));
+
+  if (target.is("button") && buttonId === "delete-post-btn") {
+    const confirmed = confirm(
+      "Are you sur you want to delete this post? This cannot be undone."
+    );
+    if (confirmed) {
+      const options = {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        redirect: "follow",
+      };
+
+      const response = await fetch(`/api/posts/${id}`, options);
+
+      if (response.status !== 200) {
+        console.error("Post deletion failed");
+      } else {
+        $(`#post-${id}`).empty();
+        $(`#post-${id}`)
+          .append(`<div class="alert alert-secondary d-flex flex-column align-items-center" id="delete-alert">
+      <h4 class="alert-heading text-center"><i class="fa-solid fa-check"></i> Your post has been deleted successfully!</h4>
+      </div>`);
+      }
+    }
+  }
+
+  if (target.is("button") && buttonId === "edit-post-btn") {
+    window.location.replace(`/dashboard/edit/${id}`);
+  }
 };
 
 $("#logout-btn").click(handleLogout);
@@ -155,4 +197,4 @@ $("#loginForm").submit(handleLogin);
 $("#comment-form").submit(handleAddComment);
 $("#add-post-form").submit(handleAddPost);
 $("#edit-post-form").submit(handleEditPost);
-$("#my-posts-container").click(handleDeletePost);
+$("#my-posts-container").click(handleChangePost);
