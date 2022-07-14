@@ -125,7 +125,7 @@ const handleAddPost = async (event) => {
 const handleEditPost = async (event) => {
   event.preventDefault();
 
-  const id = parseInt($("#edit-post-btn").attr("data-postId"));
+  const id = parseInt($("#edit-submit-btn").attr("data-postId"));
   const title = $("#inputTitle").val().trim();
   const postText = $("#inputPostText").val().trim();
 
