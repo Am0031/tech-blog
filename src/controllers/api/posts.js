@@ -42,14 +42,14 @@ const getPostById = async (req, res) => {
 
 const createPost = async (req, res) => {
   try {
-    const { title, postText } = req.body;
+    const { title, postText, id } = req.body;
     if (!title && !postText) {
       return res.status(400).json({ message: "Unable to create post" });
     }
 
     // FOR NOW: hard code user id
     // Later, get user id from logged in session object
-    const userId = 1;
+    const userId = id;
 
     const newPost = await Post.create({ title, postText, userId });
     return res.status(200).json({ message: "Post created", newPost: newPost });
