@@ -87,7 +87,7 @@ const handleAddComment = async (event) => {
   event.stopPropagation();
 
   const postId = parseInt($("#add-comment-btn").attr("data-postId"));
-  const userId ='@Session["user"]';
+  const userId = parseInt($("#add-comment-btn").attr("data-userId"));
   const commentText = $("#inputCommentText").val().trim();
 
   const commentInfo = { postId, commentText, userId };
