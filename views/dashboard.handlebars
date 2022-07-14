@@ -10,7 +10,7 @@
 
 {{#if data.length}}
       <div
-        class="container post-container d-flex flex-column align-items-stretch"
+        class="container post-container d-flex flex-column align-items-stretch" id="my-posts-container"
       >
         {{#each data}}
         <div class="card border-success mb-3">
@@ -18,7 +18,7 @@
             <h4 class="card-title">{{title}}</h4>
             <div>
               <a class="btn btn-primary" href="/dashboard/edit/{{id}}" id="edit-post-btn" data-postId={{id}}>Edit</a>
-              <a class="btn btn-danger" role="button" id="delete-post-btn" data-postId={{id}}>Delete</a>
+              <button class="btn btn-danger" type="button" id="delete-post-btn" data-postId={{id}}>Delete</button>
             </div>
           </div>
           <div class="card-body">

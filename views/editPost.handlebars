@@ -2,29 +2,31 @@
 {{>privateNavbar}}
 
 <div class="container d-flex flex-column align-items-center">
-  <h1 class="display-4 mb-3 text-center">{{username}} - we need details for your new post</h1>
+  <h1 class="display-4 mb-3 text-center">{{user.username}} - you can edit your post below</h1>
   <a href="/dashboard" class="btn btn-success btn-lg m-4">Back to my dashboard</a>
   </div>
 
-<div class="container">
+<div class="container" id="edit-post-container">
   <div
-        class="container post-container d-flex flex-column align-items-stretch"
+        class="container post-container d-flex flex-column align-items-stretch" id="post-container"
       >
         <div class="card border-success mb-3">
           <div class="card-header d-flex flex-row justify-content-between">
-            <h4 class="card-title">Add the content for your new blog post</h4>
+            <h4 class="card-title">Change the title or text below and click submit to update your post</h4>
           </div>
           <div class="card-body">
-            <form class="text-left" id="add-post-form">
+            <form class="text-left" id="edit-post-form">
               <fieldset>
                 <div class="form-group">
-                  <label for="inputUsername" class="form-label">Title</label>
+                  <label for="inputTitle" class="form-label">Title</label>
                   <input
                     type="text"
                     class="form-control"
                     id="inputTitle"
                     aria-describedby="titleHelp"
-                    placeholder="Enter the title for your new post"
+                    value="{{data.title}}"
+                    minlength="3"
+                    maxlength="50"
                   />
                   <small id="titleHelp" class="form-text text-muted"
                     >Limit of 50 characters</small
@@ -36,12 +38,12 @@
                   >
                   <textarea
                     class="form-control"
-                    id="textarea"
+                    id="inputPostText"
                     rows="5"
-                  ></textarea>
+                  >{{data.postText}}</textarea>
                 </div>
                 <div class="form-group d-flex flex-column align-items-center">
-                  <button type="submit" class="btn btn-success mt-3" id="add-post-btn" data-id={{id}}>
+                  <button type="submit" class="btn btn-success mt-3" id="edit-post-btn" data-postId={{data.id}} data-userId={{user.id}}>
                     Submit
                   </button>
                 </div>

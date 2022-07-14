@@ -28,10 +28,26 @@ const renderDashboardPage = async (req, res) => {
     res.render("error");
   }
 };
+
 const renderEditPost = async (req, res) => {
-  const filePath = path.join(__dirname, "../../../public/editPost.html");
-  return res.sendFile(filePath);
+  try {
+    const { isLoggedIn } = req.session;
+    const user = req.session.user;
+    const { id } = req.params;
+    const post = await dataProvider.getFullPost(id);
+    const viewModel = post.get({ plain: true });
+
+    return res.render("editPost", {
+      isLoggedIn,
+      data: viewModel,
+      user: user,
+    });
+  } catch (error) {
+    console.log(`${error.message}`);
+    res.render("error");
+  }
 };
+
 const renderCreatePost = async (req, res) => {
   try {
     const { isLoggedIn } = req.session;

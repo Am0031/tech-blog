@@ -116,8 +116,34 @@ const handleAddPost = async (event) => {
     </div>`);
   }
 };
-const handleEditPost = () => {
-  console.log("handling edit");
+const handleEditPost = async (event) => {
+  event.preventDefault();
+
+  const id = parseInt($("#edit-post-btn").attr("data-postId"));
+  const title = $("#inputTitle").val().trim();
+  const postText = $("#inputPostText").val().trim();
+
+  const postContent = { title, postText };
+
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    redirect: "follow",
+    body: JSON.stringify(postContent),
+  };
+
+  const response = await fetch(`/api/posts/${id}`, options);
+  if (response.status !== 200) {
+    console.error("Post update failed");
+  } else {
+    $("#post-container").remove();
+    $("#edit-post-container")
+      .append(`<div class="alert alert-secondary d-flex flex-column align-items-center">
+    <h4 class="alert-heading text-center"><i class="fa-solid fa-check"></i> Your post has been updated successfully!</h4>
+    </div>`);
+  }
 };
 const handleDeletePost = () => {
   console.log("handling delete post");
@@ -129,4 +155,4 @@ $("#loginForm").submit(handleLogin);
 $("#comment-form").submit(handleAddComment);
 $("#add-post-form").submit(handleAddPost);
 $("#edit-post-form").submit(handleEditPost);
-$("#delete-post-btn").submit(handleDeletePost);
+$("#my-posts-container").click(handleDeletePost);
