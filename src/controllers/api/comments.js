@@ -2,14 +2,10 @@ const { User, Post, Comment } = require("../../models");
 
 const createComment = async (req, res) => {
   try {
-    const { postId, commentText } = req.body;
+    const { postId, commentText, userId } = req.body;
     if (!commentText) {
       return res.status(400).json({ message: "Unable to create comment" });
     }
-
-    // FOR NOW: hard code user id
-    // Later, get user id from logged in session object
-    const userId = 1;
 
     const newComment = await Comment.create({ commentText, userId, postId });
     return res

@@ -43,14 +43,14 @@
       <div
         class="container post-container d-flex flex-column align-items-stretch"
       >
-      <div class="d-flex flex-column align-items-center">
+      <div class="d-flex flex-column align-items-center mb-3">
           <a
             class="btn btn-success m-3 btn btn-success"
             style="width: 200px"
             href="/"
             >Back to All Posts
           </a>
-          <h2>Want to remove one of your posts? You can access this option through your <a href="/dashboard" class="alert-link">dashboard</a>!</h2>
+          <p class="mb-3">Want to remove one of your posts? You can access this option through your <a href="/dashboard" class="alert-link">dashboard</a>!</p>
         </div>
         <div class="card border-success mb-3">
           <div class="card-header d-flex flex-row justify-content-between">
@@ -64,11 +64,11 @@
 
        
         <div class="subtitle text-center">
-          <h2 class="display-4 mb-3 text-center">Comments on this post</h2>
+          <h4 class="display-4 mb-3 text-center">Comments on this post</h4>
         </div>
 
          {{#if isLoggedIn}}
-        <div class="card border-success mb-3">
+        <div class="card border-success mb-3" id="add-comment-container">
           <div class="card-header d-flex flex-row justify-content-between">
             <h4 class="card-title">Add a comment</h4>
           </div>
@@ -77,10 +77,10 @@
               <label for="textarea" class="form-label mt-4"
                 >Type your comment here</label
               >
-              <textarea class="form-control" id="textarea" rows="5"></textarea>
+              <textarea class="form-control" id="inputCommentText" rows="5"></textarea>
             </div>
             <div class="form-group d-flex flex-column align-items-center">
-              <button type="submit" class="btn btn-success mt-3" id="add-comment-btn" data-postId={{data.id}}>Submit</button>
+              <button type="submit" class="btn btn-success mt-3" id="add-comment-btn" data-postId={{data.id}} data-userId={{data.userId}}>Submit</button>
             </div>
           </form>
         </div>

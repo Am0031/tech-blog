@@ -82,8 +82,43 @@ const handleLogout = async (event) => {
   }
 };
 
-const handleAddComment = () => {
-  console.log("handling add comment");
+const handleAddComment = async (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+
+  const postId = parseInt($("#add-comment-btn").attr("data-postId"));
+  const userId ='@Session["user"]';
+  const commentText = $("#inputCommentText").val().trim();
+
+  const commentInfo = { postId, commentText, userId };
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    redirect: "follow",
+    body: JSON.stringify(commentInfo),
+  };
+
+  const response = await fetch("/api/comments", options);
+  if (response.status !== 200) {
+    console.error("Comment creation failed");
+    $("#add-comment-container").empty();
+    $("#add-comment-container").off("click");
+    $("#add-comment-container")
+      .append(`<div class="alert alert-danger d-flex flex-column align-items-center">
+    <h4 class="alert-heading text-center"><i class="fa-solid fa-check"></i> Sorry, your new comment could not be created!</h4>
+    <h4> Please go back to <a class="btn btn-primary" href="/">the home page</a>. </h4>
+    </div>`);
+  } else {
+    $("#add-comment-container").empty();
+    $("#add-comment-container").off("click");
+    $("#add-comment-container")
+      .append(`<div class="alert alert-secondary d-flex flex-column align-items-center">
+    <h4 class="alert-heading text-center"><i class="fa-solid fa-check"></i> Your new comment has been created successfully!</h4>
+    </div>`);
+  }
 };
 
 const handleAddPost = async (event) => {
@@ -122,7 +157,7 @@ const handleAddPost = async (event) => {
     </div>`);
   }
 };
-const handleEditPost = async (event) => {
+const handleEditSubmit = async (event) => {
   event.preventDefault();
 
   const id = parseInt($("#edit-submit-btn").attr("data-postId"));
@@ -196,5 +231,5 @@ $("#signupForm").submit(handleSignup);
 $("#loginForm").submit(handleLogin);
 $("#comment-form").submit(handleAddComment);
 $("#add-post-form").submit(handleAddPost);
-$("#edit-post-form").submit(handleEditPost);
+$("#edit-post-form").submit(handleEditSubmit);
 $("#my-posts-container").click(handleChangePost);

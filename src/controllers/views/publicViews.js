@@ -60,6 +60,11 @@ const renderFullPost = async (req, res) => {
 
     const viewModel = formatData(data);
 
+    if (isLoggedIn) {
+      const sessionUserId = req.session.user.id;
+      viewModel.userId = sessionUserId;
+    }
+
     res.render("fullPost", { isLoggedIn, data: viewModel });
   } catch (error) {
     console.log(`${error.message}`);
