@@ -38,8 +38,6 @@ const renderDashboardCommentsPage = async (req, res) => {
       comment.get({ plain: true })
     );
 
-    console.log(commentsData);
-
     const formatData = (each) => {
       const id = each.user.id;
       const commentText = each.commentText;

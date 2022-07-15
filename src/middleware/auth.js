@@ -5,8 +5,6 @@ const auth = (req, res, next) => {
   } else {
     res.redirect("/login");
   }
-  // console.log(`[INFO]: User is in session`);
-  // next();
 };
 
 module.exports = auth;
