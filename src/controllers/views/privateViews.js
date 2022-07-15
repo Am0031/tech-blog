@@ -31,10 +31,9 @@ const renderDashboardPage = async (req, res) => {
 
 const renderDashboardCommentsPage = async (req, res) => {
   try {
-    const { isLoggedIn } = req.session;
-    const { id, username } = req.session.user;
+    const { isLoggedIn, user } = req.session;
 
-    const comments = await dataProvider.getMyComments(id);
+    const comments = await dataProvider.getMyComments(user.id);
     const commentsData = comments.map((comment) =>
       comment.get({ plain: true })
     );
@@ -42,7 +41,7 @@ const renderDashboardCommentsPage = async (req, res) => {
     console.log(commentsData);
 
     const formatData = (each) => {
-      const id = each.id;
+      const id = each.user.id;
       const commentText = each.commentText;
       const commentDate = each.updatedAt;
       const parentPost = each.post.title;
@@ -56,7 +55,7 @@ const renderDashboardCommentsPage = async (req, res) => {
     const viewModel = commentsData.map(formatData);
     return res.render("dashboard-comments", {
       isLoggedIn,
-      username,
+      user,
       data: viewModel,
     });
   } catch (error) {
