@@ -1,3 +1,10 @@
-#delete-alert {
+.delete-alert {
   height: 100%;
+}
+
+.postTitle {
+  font-style: italic;
+}
+.commentDate {
+  font-size: 0.6rem;
 }

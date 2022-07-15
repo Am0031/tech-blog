@@ -1,0 +1,49 @@
+
+{{>privateNavbar}}
+
+<div class="container d-flex flex-column align-items-center">
+  <h1 class="display-4 mb-3 text-center">{{username}} - these are all your comments made on posts</h1>
+  <a href="/dashboard/create" class="btn btn-success btn-lg m-4" id="add-post-btn">Add new post</a>
+  <a href="/dashboard" class="btn btn-info btn-lg m-4" id="view-posts-btn">Go back to your posts</a>
+  </div>
+
+<div class="container" id="my-content-container">
+
+
+{{#if data.length}}
+      <div
+        class="container post-container d-flex flex-column align-items-stretch" id="my-comments-container"
+      >
+        
+        {{#each data}}
+      <div class="card border-info mb-3" id="comment-{{id}}">
+          <div class="d-flex flex-column">
+            <p class="card-header postTitle">Comment made on the post: {{parentPost}}</p>
+            <p class="card-body commentText">{{commentText}}</p>
+
+            <div class="card-footer d-flex flex-row justify-content-between">
+              <p class="commentDate">Comment made on {{formatDate commentDate}}</p>
+              <div>
+              <button class="btn btn-danger" type="button" data-btnId="delete-comment-btn" data-commentId={{id}}>Delete</button>
+            </div>
+            </div>
+          </div>
+          
+        </div>
+      {{/each}}
+      </div>
+
+{{else}}
+
+      <div
+        class="container post-container d-flex flex-column align-items-stretch"
+      >
+        <div class="alert alert-warning">
+        <h4 class="alert-heading text-center">You don't have any comments!</h4>
+        <p class="mb-0 text-center"> You can get started and create your first comment by checking out posts on the <a href="/" class="alert-link">home</a> page and responding to them!</p>
+        </div>
+      </div>
+
+{{/if}}
+
+</div>

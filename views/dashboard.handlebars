@@ -4,9 +4,11 @@
 <div class="container d-flex flex-column align-items-center">
   <h1 class="display-4 mb-3 text-center">{{username}} - these are all your blog posts</h1>
   <a href="/dashboard/create" class="btn btn-success btn-lg m-4" id="add-post-btn">Add new post</a>
+  <a href="/dashboard/comments" class="btn btn-info btn-lg m-4" id="view-comments-btn">See your comments instead</a>
   </div>
 
-<div class="container">
+<div class="container" id="my-content-container">
+
 
 {{#if data.length}}
       <div
@@ -22,7 +24,7 @@
             </div>
           </div>
           <div class="card-body">
-            <p class="card-text">Added on {{formatDate date}}</p>
+            <p class="card-text postDate">Added on {{formatDate date}}</p>
           </div>
         </div>
         {{/each}}

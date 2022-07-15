@@ -22,4 +22,14 @@ const getFullPost = async (id) => {
   return post;
 };
 
-module.exports = { getAllPosts, getFullPost };
+const getMyComments = async (id) => {
+  return await Comment.findAll({
+    attributes: ["id", "commentText", "updatedAt"],
+    include: [
+      { model: User, attributes: ["id", "username"], where: { id: id } },
+      { model: Post, attributes: ["id", "title"] },
+    ],
+  });
+};
+
+module.exports = { getAllPosts, getFullPost, getMyComments };

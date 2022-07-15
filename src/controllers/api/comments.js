@@ -1,5 +1,27 @@
 const { User, Post, Comment } = require("../../models");
 
+const getMyComments = async () => {
+  try {
+    const { id } = req.params;
+
+    const myComments = await Comment.findAll({
+      attributes: ["id", "commentText", "updatedAt"],
+      include: [
+        { model: User, attributes: ["id", "username"] },
+        { model: Post, attributes: ["id", "title"] },
+      ],
+    });
+
+    if (!myComments) {
+      return res.status(500).json({ message: "Comments not found" });
+    }
+    return res.json({ data: myComments });
+  } catch (error) {
+    console.error(`ERROR | ${error.message}`);
+    return res.status(500).json(error);
+  }
+};
+
 const createComment = async (req, res) => {
   try {
     const { postId, commentText, userId } = req.body;
@@ -54,4 +76,4 @@ const updateComment = async (req, res) => {
   }
 };
 
-module.exports = { createComment, updateComment, deleteComment };
+module.exports = { createComment, updateComment, deleteComment, getMyComments };

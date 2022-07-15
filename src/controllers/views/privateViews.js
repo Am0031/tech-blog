@@ -29,6 +29,42 @@ const renderDashboardPage = async (req, res) => {
   }
 };
 
+const renderDashboardCommentsPage = async (req, res) => {
+  try {
+    const { isLoggedIn } = req.session;
+    const { id, username } = req.session.user;
+
+    const comments = await dataProvider.getMyComments(id);
+    const commentsData = comments.map((comment) =>
+      comment.get({ plain: true })
+    );
+
+    console.log(commentsData);
+
+    const formatData = (each) => {
+      const id = each.id;
+      const commentText = each.commentText;
+      const commentDate = each.updatedAt;
+      const parentPost = each.post.title;
+      return {
+        id,
+        commentText,
+        commentDate,
+        parentPost,
+      };
+    };
+    const viewModel = commentsData.map(formatData);
+    return res.render("dashboard-comments", {
+      isLoggedIn,
+      username,
+      data: viewModel,
+    });
+  } catch (error) {
+    console.log(`${error.message}`);
+    res.render("error");
+  }
+};
+
 const renderEditPost = async (req, res) => {
   try {
     const { isLoggedIn } = req.session;
@@ -60,4 +96,9 @@ const renderCreatePost = async (req, res) => {
   }
 };
 
-module.exports = { renderDashboardPage, renderEditPost, renderCreatePost };
+module.exports = {
+  renderDashboardPage,
+  renderEditPost,
+  renderCreatePost,
+  renderDashboardCommentsPage,
+};
