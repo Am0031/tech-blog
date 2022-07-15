@@ -227,6 +227,43 @@ const handleChangePost = async (event) => {
   }
 };
 
+const handleDeleteComment = async (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+
+  const target = $(event.target);
+  const buttonId = target.attr("data-btnId");
+  const id = parseInt(target.attr("data-commentId"));
+
+  if (target.is("button") && buttonId === "delete-comment-btn") {
+    const confirmed = confirm(
+      "Are you sur you want to delete this comment? This cannot be undone."
+    );
+    if (confirmed) {
+      const options = {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        redirect: "follow",
+      };
+
+      const response = await fetch(`/api/comments/${id}`, options);
+
+      if (response.status !== 200) {
+        console.error("Comment deletion failed");
+      } else {
+        $(`#comment-${id}`).empty();
+        $(`#comment-${id}`).removeClass("border-info");
+        $(`#comment-${id}`)
+          .append(`<div class="alert alert-secondary delete-alert d-flex flex-column align-items-center justify-content-center m-0" id="delete-alert">
+      <h4 class="alert-heading text-center"><i class="fa-solid fa-check"></i> Your comment has been deleted successfully!</h4>
+      </div>`);
+      }
+    }
+  }
+};
+
 $("#logout-btn").click(handleLogout);
 $("#signupForm").submit(handleSignup);
 $("#loginForm").submit(handleLogin);
@@ -234,3 +271,4 @@ $("#comment-form").submit(handleAddComment);
 $("#add-post-form").submit(handleAddPost);
 $("#edit-post-form").submit(handleEditSubmit);
 $("#my-posts-container").click(handleChangePost);
+$("#my-comments-container").click(handleDeleteComment);
