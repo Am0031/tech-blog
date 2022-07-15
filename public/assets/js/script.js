@@ -213,8 +213,9 @@ const handleChangePost = async (event) => {
         console.error("Post deletion failed");
       } else {
         $(`#post-${id}`).empty();
+        $(`#post-${id}`).removeClass("border-success");
         $(`#post-${id}`)
-          .append(`<div class="alert alert-secondary d-flex flex-column align-items-center" id="delete-alert">
+          .append(`<div class="alert alert-secondary delete-alert d-flex flex-column align-items-center justify-content-center m-0" id="delete-alert">
       <h4 class="alert-heading text-center"><i class="fa-solid fa-check"></i> Your post has been deleted successfully!</h4>
       </div>`);
       }
