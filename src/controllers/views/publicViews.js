@@ -11,7 +11,7 @@ const renderHomePage = async (req, res) => {
       const id = each.id;
       const title = each.title;
       const user = each.user.username;
-      const date = each.createdAt;
+      const date = each.updatedAt;
       return {
         id,
         title,
@@ -39,11 +39,11 @@ const renderFullPost = async (req, res) => {
       const title = data.title;
       const postText = data.postText;
       const user = data.user.username;
-      const date = data.createdAt;
+      const date = data.updatedAt;
 
       const formatComments = (each) => {
         const commentText = each.commentText;
-        const commentDate = each.createdAt;
+        const commentDate = each.updatedAt;
         const commentUser = each.user.username;
         return { commentText, commentDate, commentUser };
       };
