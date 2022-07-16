@@ -2,7 +2,7 @@
 
 ![MIT](https://img.shields.io/badge/License-MIT-blue)
 
-A note taking app using node.js, express.js and a frontend html interface for interaction with the user.
+A tech blog app using node.js, express.js and handlebars for the frontend templating.
 
 ## Table of Content
 
@@ -19,37 +19,65 @@ A note taking app using node.js, express.js and a frontend html interface for in
 
 Github repo: [https://github.com/Am0031/tech-blog/tree/dev](https://github.com/Am0031/tech-blog/tree/dev)
 
-Heroku deployed page: [https://peaceful-bastion-97815.herokuapp.com/](https://peaceful-bastion-97815.herokuapp.com/)
+Heroku deployed page: [https://]()
 
 ## Screenshots of the application
 
-See below the different pages and views that the user will come across when using the app:
+See below the different pages and views that the user will come across when using the app (desktop version) and a mobile version screenshot:
 
 <details>
-<summary>Home page</summary>
+<summary>Home page - Desktop</summary>
 
-![Home page](./other/screenshot-home-page.png)
+![Home page](./other/screenshot-home.png)
 
 </details>
 
 <details>
-<summary>Notes page - Existing notes on left side and ready to enter new note on right side</summary>
+<summary>Full post</summary>
 
-![Home page](./other/screenshot-notes-page1.png)
-
-</details>
-
-<details>
-<summary>Notes page - Existing notes on left side and displaying existing note on right side</summary>
-
-![Home page](./other/screenshot-notes-page2.png)
+![Full Post](./other/screenshot-full-post.png)
 
 </details>
 
 <details>
-<summary>Notes page - Existing notes on left side and new/existing note fields ready for saving (save button visible)</summary>
+<summary>Dashboard - My posts</summary>
 
-![Home page](./other/screenshot-notes-page3.png)
+![Dashboard](./other/screenshot-dashboard.png)
+
+</details>
+
+<details>
+<summary>Dashboard - My comments</summary>
+
+![Dashboard](./other/screenshot-dashboard.png)
+
+</details>
+
+<details>
+<summary>Add post</summary>
+
+![Full Post](./other/screenshot-add-post.png)
+
+</details>
+
+<details>
+<summary>Edit post</summary>
+
+![Full Post](./other/screenshot-edit-post.png)
+
+</details>
+
+<details>
+<summary>Delete comment</summary>
+
+![Delete comment](./other/screenshot-comments.png)
+
+</details>
+
+<details>
+<summary>Home page - Mobile version</summary>
+
+![Home page - Mobile](./other/screenshot-mobile.png)
 
 </details>
 
@@ -126,11 +154,11 @@ The routes for this application are grouped into the 3 families:
 
 ## Templating engine
 
-For this project, the templating engine **handlebars.js** has been used
+For this project, the templating engine **handlebars.js** has been used. It allows to set the views up so that they render parts of the template according to the session's status.
 
 ## Installation
 
-To try out this application, you can visit this [heroku deployed app page](https://peaceful-bastion-97815.herokuapp.com/).
+To try out this application, you can visit this [heroku deployed app page]().
 
 If you'd like to install this application locally on your machine, you will need to follow these steps for it to then run properly:
 
