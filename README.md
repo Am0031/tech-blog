@@ -85,12 +85,19 @@ See below the different pages and views that the user will come across when usin
 
 </details>
 
-### Mobile view:
+### Mobile views:
 
 <details>
 <summary>Home page - Mobile version</summary>
 
 ![Home page - Mobile](./other/screenshot-mobile.png)
+
+</details>
+
+<details>
+<summary>Dashboard - Mobile version</summary>
+
+![Home page - Mobile](./other/screenshot-dashboard-mobile.png)
 
 </details>
 
