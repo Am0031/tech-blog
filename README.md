@@ -23,7 +23,9 @@ Heroku deployed page: [https://]()
 
 ## Screenshots of the application
 
-See below the different pages and views that the user will come across when using the app (desktop version) and a mobile version screenshot:
+See below the different pages and views that the user will come across when using the app (desktop version), when not logged in and logged in, and a mobile version screenshot:
+
+### Views as a user not logged in or signed up:
 
 <details>
 <summary>Home page - Desktop</summary>
@@ -39,24 +41,40 @@ See below the different pages and views that the user will come across when usin
 
 </details>
 
+### Views as a signed up/logged in user:
+
+<details>
+<summary>Home page - Desktop</summary>
+
+![Home page](./other/screenshot-home-loggedin.png)
+
+</details>
+
+<details>
+<summary>Full post (with option to leave comment)</summary>
+
+![Full Post](./other/screenshot-full-post-loggedin.png)
+
+</details>
+
 <details>
 <summary>Dashboard - My posts</summary>
 
-![Dashboard](./other/screenshot-dashboard.png)
+![Dashboard](./other/screenshot-dashboard-posts.png)
 
 </details>
 
 <details>
 <summary>Dashboard - My comments</summary>
 
-![Dashboard](./other/screenshot-dashboard.png)
+![Dashboard](./other/screenshot-dashboard-comments.png)
 
 </details>
 
 <details>
 <summary>Add post</summary>
 
-![Full Post](./other/screenshot-add-post.png)
+![Full Post](./other/screenshot-post-add-form.png)
 
 </details>
 
@@ -67,12 +85,7 @@ See below the different pages and views that the user will come across when usin
 
 </details>
 
-<details>
-<summary>Delete comment</summary>
-
-![Delete comment](./other/screenshot-comments.png)
-
-</details>
+### Mobile view:
 
 <details>
 <summary>Home page - Mobile version</summary>
