@@ -19,7 +19,7 @@ A tech blog app using node.js, express.js and handlebars for the frontend templa
 
 Github repo: [https://github.com/Am0031/tech-blog/tree/dev](https://github.com/Am0031/tech-blog/tree/dev)
 
-Heroku deployed page: [https://](https://git.heroku.com/sleepy-oasis-40509.git)
+Heroku deployed page: [https://sleepy-oasis-40509.herokuapp.com/](https://sleepy-oasis-40509.herokuapp.com/)
 
 ## Screenshots of the application
 
@@ -178,7 +178,7 @@ For this project, the templating engine **handlebars.js** has been used. It allo
 
 ## Installation
 
-To try out this application, you can visit this [heroku deployed app page](https://git.heroku.com/sleepy-oasis-40509.git).
+To try out this application, you can visit this [heroku deployed app page](https://sleepy-oasis-40509.herokuapp.com/).
 
 If you'd like to install this application locally on your machine, you will need to follow these steps for it to then run properly:
 
