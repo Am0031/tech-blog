@@ -1,8 +1,61 @@
-# tech-blog
+# Tech blog app
 
-tech blog app
+![MIT](https://img.shields.io/badge/License-MIT-blue)
 
-## User Story
+A note taking app using node.js, express.js and a frontend html interface for interaction with the user.
+
+## Table of Content
+
+- [Summary](#summary)
+- [Screenshots of the application](#screenshots-of-the-application)
+- [Detailed user story](#detailed-user-story)
+- [Technologies](#technologies)
+- [Routes](#routes)
+- [Templating engine](#templating-engine)
+- [Installation](#installation)
+- [Contact](#contact)
+
+## Summary
+
+Github repo: [https://github.com/Am0031/tech-blog/tree/dev](https://github.com/Am0031/tech-blog/tree/dev)
+
+Heroku deployed page: [https://peaceful-bastion-97815.herokuapp.com/](https://peaceful-bastion-97815.herokuapp.com/)
+
+## Screenshots of the application
+
+See below the different pages and views that the user will come across when using the app:
+
+<details>
+<summary>Home page</summary>
+
+![Home page](./other/screenshot-home-page.png)
+
+</details>
+
+<details>
+<summary>Notes page - Existing notes on left side and ready to enter new note on right side</summary>
+
+![Home page](./other/screenshot-notes-page1.png)
+
+</details>
+
+<details>
+<summary>Notes page - Existing notes on left side and displaying existing note on right side</summary>
+
+![Home page](./other/screenshot-notes-page2.png)
+
+</details>
+
+<details>
+<summary>Notes page - Existing notes on left side and new/existing note fields ready for saving (save button visible)</summary>
+
+![Home page](./other/screenshot-notes-page3.png)
+
+</details>
+
+## Detailed User Story
+
+### User Story
 
 ```md
 AS A developer who writes about tech
@@ -10,7 +63,7 @@ I WANT a CMS-style blog site
 SO THAT I can publish articles, blog posts, and my thoughts and opinions
 ```
 
-## Acceptance Criteria
+### Acceptance Criteria
 
 ```md
 GIVEN a CMS-style blog site
@@ -47,3 +100,106 @@ THEN I am signed out of the site
 WHEN I am idle on the site for more than a set time
 THEN I am able to view comments but I am prompted to log in again before I can add, update, or delete comments
 ```
+
+## Technologies
+
+For this project, the following technologies and packages were used:
+
+- NPM & Node.js
+- Express.js
+- MySQL & Sequelize
+- Express-session
+- bcrypt
+- handlebars.js
+- JavaScript & jQuery
+- Bootstrap
+
+## Routes
+
+On the back end, the application works with a MySQL database to store the posts and comments, and an express server to set up route to the DB.
+
+The routes for this application are grouped into the 3 families:
+
+- api: for interaction with the DB for the 4 CRUD operations
+- views: for rendering the different pages (some of these include data retrieval from DB as well)
+- auth: for authentication
+
+## Templating engine
+
+For this project, the templating engine **handlebars.js** has been used
+
+## Installation
+
+To try out this application, you can visit this [heroku deployed app page](https://peaceful-bastion-97815.herokuapp.com/).
+
+If you'd like to install this application locally on your machine, you will need to follow these steps for it to then run properly:
+
+Open the CLI and clone the repository, using SSH keys:
+
+```
+git clone git@github.com:Am0031/tech-blog.git
+```
+
+Or using HTTPS link:
+
+```
+git clone https://github.com/Am0031/tech-blog.git
+```
+
+Go into the new repository and install the required packages:
+
+```
+cd tech-blog
+npm install
+```
+
+Once installed, to get this project running, the following steps must be followed:
+
+Step 1: Set the environment variables
+
+In the root folder, create a .env file. Copy the content from the .env.sample file into your newly created .env file and complete each line as per the below guidance:
+
+```
+DB_HOST= (enter "localhost" or your host details)
+DB_USER= (enter "root" or your user details)
+DB_PASSWORD= (enter your mysql password)
+DB_NAME= "techblog_db"
+SESSION_SECRET= (enter a string of your choice for your session)
+```
+
+Step 2: Database setup
+
+From the db folder, open an integrated terminal and enter the instructions below in this order, one line at a time, pressing enter after each line:
+
+```
+mysql -u root -p
+(enter your password when prompted)
+
+source schema.sql
+
+quit
+```
+
+This will create the database. At this point, when checking in MySQL Workbench, you should see your database exists but is empty.
+
+To seed information into this database, from the root folder, open an integrated terminal and enter the instruction below and press enter:
+
+```
+npm run seed
+```
+
+You can check your database in MySQL Workbench and should see information in all your tables.
+
+Step 3: Start the application
+
+Still in your integrated terminal, to run your server, enter the instruction below and press enter:
+
+```
+npm run start
+```
+
+Once the application is started, you can open your browser and travel to the localhost page with the following url: **http://localhost:4000/**
+
+## Contact
+
+If you have any questions about this application, feel free to get in touch by sending me an [email](mailto:amelie.pira@gmail.com).
