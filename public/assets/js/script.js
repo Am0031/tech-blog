@@ -31,6 +31,11 @@ const handleSignup = async (event) => {
   const response = await fetch("/auth/signup", options);
 
   if (response.status !== 200) {
+    $("#signup-fields-div")
+      .append(`<strong id="signupAlert" class="form-text strong-text"
+    >The signup process could not be completed. Please try again or go to login.</strong
+  >`);
+    $("#inputEmail").keyup(() => $("#signupAlert").remove());
     console.error("Signup failed");
   } else {
     window.location.replace("/login");
