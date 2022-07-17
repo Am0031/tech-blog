@@ -57,6 +57,12 @@ const handleLogin = async (event) => {
   const response = await fetch("/auth/login", options);
 
   if (response.status !== 200) {
+    $("#email-field-div")
+      .append(`<strong id="emailAlert" class="form-text strong-text"
+    >This email or password is not recognised. Please try again or sign up first.</strong
+  >`);
+    $("#inputEmail").keyup(() => $("#emailAlert").remove());
+
     console.error("Login failed");
   } else {
     window.location.replace("/dashboard");

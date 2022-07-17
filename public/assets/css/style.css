@@ -11,6 +11,9 @@
 .big-margin {
   margin: 3rem;
 }
+.strong-text {
+  color: red;
+}
 
 @media screen and (max-width: 480px) {
   .media-class {
