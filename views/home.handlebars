@@ -1,0 +1,65 @@
+{{#if isLoggedIn}}
+{{>privateNavbar}}
+{{else}}
+{{>publicNavbar}}
+{{/if}}
+
+
+{{#if isLoggedIn}}
+    <div class="container"><h1 class="display-4 mb-3 text-center">All blog posts</h1></div>
+    {{else}}
+    <div class="container">
+    <h1 class="display-4 mb-3 text-center">All blog posts</h1>
+      <div class="container">
+        <div class="container text-center">
+          <div class="media-class">
+            <div class="card-header d-flex flex-column big-margin">
+              <h4 class="mt-4">
+                Become a member and start posting on the tech blog
+              </h4>
+              <a
+                class="btn btn-success btn-lg mt-4"
+                href="/signup"
+                role="button"
+                >Sign Up</a
+              >
+            </div>
+            <div class="card-header d-flex flex-column big-margin">
+              <h4 class="mt-4">
+                Already a member? Just login to access all features of the tech
+                blog
+              </h4>
+              <a class="btn btn-primary btn-lg mt-4" href="/login" role="button"
+                >Log In</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{{/if}}
+
+
+<div class="container">
+
+      <div
+        class="container post-container d-flex flex-column align-items-stretch"
+      >
+        {{#each data}}
+        <div class="card border-success mb-3">
+            <div class="card-header">
+            <div class="media-class justify-content-between">
+              <h4 class="card-title">{{title}}</h4>
+              <a class="btn btn-success" href="/posts/{{id}}">Read the full post</a>
+            </div>
+            </div>
+            <div class="card-body">
+            <p class="card-text">Posted by:
+                {{user}}
+                    - On :
+                {{formatDate date}}</p>
+            </div>
+            </div>
+        {{/each}}
+      </div>
+</div>
